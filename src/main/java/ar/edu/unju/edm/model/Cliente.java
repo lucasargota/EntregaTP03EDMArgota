@@ -20,6 +20,72 @@ public class Cliente {
 	private int numTelefono;
 	private String email;
 	
+	
+	
+	private String password;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaUltimaCompra;
+	private String nYa;
+	private int edad;
+	private String datosAdicionales;
+	private String tiempoUltCompra;
+	
+
+	
+	
+	
+	
+	
+	
+	
+	public String getTiempoUltCompra() {
+		return tiempoUltCompra;
+	}
+
+	public void setTiempoUltCompra(String tiempoUltCompra) {
+		this.tiempoUltCompra = tiempoUltCompra;
+	}
+
+	public String getDatosAdicionales() {
+		return datosAdicionales;
+	}
+
+	public void setDatosAdicionales(String datosAdicionales) {
+		this.datosAdicionales = datosAdicionales;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public String getnYa() {
+		return nYa;
+	}
+
+	public void setnYa(String nYa) {
+		this.nYa = nYa;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public LocalDate getFechaUltimaCompra() {
+		return fechaUltimaCompra;
+	}
+
+	public void setFechaUltimaCompra(LocalDate fechaUltimaCompra) {
+		this.fechaUltimaCompra = fechaUltimaCompra;
+	}
+
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}

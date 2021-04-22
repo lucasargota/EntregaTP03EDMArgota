@@ -1,5 +1,8 @@
 package ar.edu.unju.edm.service.imp;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,34 @@ public class ClienteServiceImp implements IClienteService{
 	@Override
 	public void guardarCliente(Cliente unCliente) {
 		// TODO Auto-generated method stub
+		/*Fecha fechacumpleaños*/
+		LocalDate fechaNac=unCliente.getFechaNacimiento();
+		/*Fecha actual*/
+		LocalDate fechaHoy=LocalDate.now();
+		Period periodo = Period.between(fechaNac, fechaHoy);
+		unCliente.setEdad(periodo.getYears());
+		
+		
+		LocalDate ultimaCompra = unCliente.getFechaUltimaCompra();
+        Period periodo1 = Period.between(ultimaCompra,fechaHoy );
+        unCliente.setTiempoUltCompra("DD-MM-YY;" + periodo1.getDays() +"-"+ periodo1.getMonths() +"-"+ periodo1.getYears());
+		       
+        
+
+        
+        LocalDate nextBDay = fechaNac.withYear(fechaHoy.getYear());
+
+        /*Si el cumpleaños ya ocurrió este año, agrega 1 año*/
+        if (nextBDay.isBefore(fechaHoy) || nextBDay.isEqual(fechaHoy)) {
+            nextBDay = nextBDay.plusYears(1);
+        }
+        
+        Period p = Period.between(fechaHoy, nextBDay);
+
+        unCliente.setDatosAdicionales("Restan " + p.getDays() + "dias"+ p.getMonths() + " meses, y " + p.getYears() +"años");
+               
+        
+		
 		listadoClientes.add(unCliente);
 	}
 
