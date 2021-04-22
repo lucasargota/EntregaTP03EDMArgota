@@ -2,7 +2,6 @@ package ar.edu.unju.edm.service.imp;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class ClienteServiceImp implements IClienteService{
 		       
         
 
-        
+        /*tiempo que falta hasta el cumpleaños*/
         LocalDate nextBDay = fechaNac.withYear(fechaHoy.getYear());
 
         /*Si el cumpleaños ya ocurrió este año, agrega 1 año*/
@@ -48,7 +47,7 @@ public class ClienteServiceImp implements IClienteService{
         }
         
         Period p = Period.between(fechaHoy, nextBDay);
-
+        
         unCliente.setDatosAdicionales("Restan " + p.getDays() + "dias"+ p.getMonths() + " meses, y " + p.getYears() +"años");
                
         
